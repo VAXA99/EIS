@@ -9,4 +9,9 @@
 <!--    <alternatives>-->
 <!--        <class>Lab1_CDI.Calculator.SineCosineCalculator</class>-->
 <!--    </alternatives>-->
+
+    <decorators>
+        <class>Lab2_Decorator.Decorator.MedianFilterDecorator</class>
+        <class>Lab2_Decorator.Decorator.ReplaceElementDecorator</class>
+    </decorators>
 </beans>

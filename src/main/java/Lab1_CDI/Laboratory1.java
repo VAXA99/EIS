@@ -1,3 +1,5 @@
+package Lab1_CDI;
+
 import Lab1_CDI.Calculator.Parameter.CosineOnlyParameters;
 import Lab1_CDI.Calculator.Parameter.TangentParameters;
 import Lab1_CDI.Component.TangentCalculator;
@@ -20,8 +22,7 @@ public class Laboratory1 {
         try {
             TangentCalculator tangentCalculator = container.select(TangentCalculator.class).get();
 
-            TangentParameters<Double> parameters = new CosineOnlyParameters<Double>(0.0);
-
+            TangentParameters<Double> parameters = new CosineOnlyParameters<Double>(0.3);
 
             double tangent = tangentCalculator.calculateTangent(parameters);
             System.out.println(tangent);
