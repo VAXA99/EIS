@@ -1,14 +1,12 @@
 package Lab1_CDI;
 
 import Lab1_CDI.Calculator.Parameter.CosineOnlyParameters;
+import Lab1_CDI.Calculator.Parameter.SineCosineParameters;
 import Lab1_CDI.Calculator.Parameter.TangentParameters;
 import Lab1_CDI.Component.TangentCalculator;
 import lombok.NoArgsConstructor;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @NoArgsConstructor
 public class Laboratory1 {
@@ -24,8 +22,10 @@ public class Laboratory1 {
 
             TangentParameters<Double> parameters = new CosineOnlyParameters<Double>(0.3);
 
+//            TangentParameters<Double> parameters = new SineCosineParameters<>(0.3, 0.5);
+
             double tangent = tangentCalculator.calculateTangent(parameters);
-            System.out.println(tangent);
+            System.out.println("Result: " + tangent);
 
         } finally {
             weld.shutdown();

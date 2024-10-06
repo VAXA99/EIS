@@ -15,7 +15,9 @@ import javax.interceptor.Interceptors;
 public class TangentCalculator {
 
     // Dependency injection point
-    @Inject @COSINE_ONLY
+    @Inject
+    @COSINE_ONLY
+    // @SINE_COSINE
     private ITangentCalculator calculator;
 
     public <T extends Number> double calculateTangent(TangentParameters<T> parameters) {

@@ -21,9 +21,6 @@ public class Laboratory2 {
 
             int[] modifiedArray = transformerBean.transform(array);
 
-            System.out.println(Arrays.toString(array));
-            System.out.println(Arrays.toString(modifiedArray));
-
         } finally {
             weld.shutdown();
         }

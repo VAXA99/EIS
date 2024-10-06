@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.decorator.Decorator;
 import javax.decorator.Delegate;
 import javax.inject.Inject;
+import java.util.Arrays;
 
 // Decorator for replacing specified elements in an array transformer
 @Decorator
@@ -14,7 +15,6 @@ import javax.inject.Inject;
 @NoArgsConstructor
 public class ReplaceElementDecorator implements ArrayTransformer {
 
-    // Injecting the original ArrayTransformer to be decorated
     @Inject
     @Delegate
     private ArrayTransformer arrayTransformer;
@@ -22,10 +22,12 @@ public class ReplaceElementDecorator implements ArrayTransformer {
     private int[] elementsToReplace = {3, 4};
     private int newElement = 0;
 
-    // Transforms the array and replaces specified elements
     @Override
     public int[] transform(int[] array) {
+        System.out.println("Replace element decorator applied");
+
         int[] transformedArray = arrayTransformer.transform(array);
+        System.out.println("Array after original transformation: " + Arrays.toString(transformedArray));
 
         // Replace specified elements in the transformed array
         for (int i = 0; i < transformedArray.length; i++) {
@@ -34,16 +36,16 @@ public class ReplaceElementDecorator implements ArrayTransformer {
             }
         }
 
+        System.out.println("Array after replacing elements: " + Arrays.toString(transformedArray));
         return transformedArray;
     }
 
-    // Checks if an element should be replaced
     private boolean shouldReplace(int element) {
         for (int e : elementsToReplace) {
             if (e == element) {
-                return true; // Element matches one to replace
+                return true;
             }
         }
-        return false; // No match found
+        return false;
     }
 }

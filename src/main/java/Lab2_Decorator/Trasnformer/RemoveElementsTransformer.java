@@ -14,29 +14,31 @@ public class RemoveElementsTransformer implements ArrayTransformer {
 
     private int[] elementsToRemove = {1, 2};
 
-    // Checks if a value is in the array of elements to remove
     private boolean contains(int value) {
         for (int element : elementsToRemove) {
             if (element == value) {
-                return true; // Value found in elements to remove
+                return true;
             }
         }
-        return false; // Value not found
+        return false;
     }
 
-    // Transforms the array by removing specified elements
     @Override
     public int[] transform(int[] array) {
-        int[] tempArray = new int[array.length]; // Temporary array to hold non-removed elements
-        int count = 0; // Counter for non-removed elements
+        System.out.println("Default implementation of ArrayTransformer applied");
+        System.out.println("Array before transformation: " + Arrays.toString(array));
 
-        // Iterate over the original array
+        int[] tempArray = new int[array.length];
+        int count = 0;
+
         for (int value : array) {
             if (!contains(value)) {
-                tempArray[count++] = value; // Add non-removed element to temp array
+                tempArray[count++] = value;
             }
         }
 
-        return Arrays.copyOf(tempArray, count); // Return a copy of the filled portion of the temp array
+        int[] resultArray = Arrays.copyOf(tempArray, count);
+        System.out.println("Array after removing elements: " + Arrays.toString(resultArray));
+        return resultArray;
     }
 }

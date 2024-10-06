@@ -15,7 +15,6 @@ public class SineCosineCalculator implements ITangentCalculator {
 
         List<T> values = parameters.getValues();
 
-        // TODO Rework this shit
         return calculateTangent(values.get(0), values.get(1));
     }
 
@@ -25,13 +24,8 @@ public class SineCosineCalculator implements ITangentCalculator {
         System.out.println("Sine and cosine calculation method: ");
 
         // Convert sine cosine to double for mathematical operations
-        double sinValue = sine.byteValue();
-        double cosValue = cosine.byteValue();
-
-        // If tangent is not determined
-        if (cosValue == 0) {
-            throw new ArithmeticException("Tangent is not determined when cosine is equal to zero");
-        }
+        double sinValue = sine.doubleValue();
+        double cosValue = cosine.doubleValue();
 
         // Calculate tangent
         return sinValue / cosValue;

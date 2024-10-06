@@ -16,7 +16,6 @@ public class CosineOnlyCalculator implements ITangentCalculator {
 
         List<T> values = parameters.getValues();
 
-        // TODO Rework this shit
         return calculateTangent(values.get(0));
     }
 
