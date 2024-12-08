@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.labsfrom6to8.Mapper.TrainMapper">
+
+    <!-- Вставка новой записи -->
+    <insert id="insertTrain" parameterType="com.labsfrom6to8.Model.Train">
+        INSERT INTO trains (name, number, is_active)
+        VALUES (#{name}, #{number}, #{isActive})
+    </insert>
+
+    <!-- Обновление записи -->
+    <update id="updateTrain" parameterType="com.labsfrom6to8.Model.Train">
+        UPDATE trains
+        SET name = #{name},
+            number = #{number},
+            is_active = #{isActive}
+        WHERE id = #{id}
+    </update>
+
+    <!-- Результат маппинга -->
+    <resultMap id="TrainResultMap" type="com.labsfrom6to8.Model.Train">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="number" column="number"/>
+        <result property="isActive" column="is_active"/>
+    </resultMap>
+
+    <!-- Выбор всех активных поездов -->
+    <select id="selectActiveTrains" resultMap="TrainResultMap">
+        SELECT * FROM trains WHERE is_active = TRUE
+    </select>
+
+    <!-- Удаление записи -->
+    <delete id="deleteTrain" parameterType="Long">
+        DELETE FROM trains
+        WHERE id = #{id}
+    </delete>
+</mapper>
