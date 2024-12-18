@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @AllArgsConstructor
 public class Train {
 
+    @JsonProperty("id")
     private Long id;
 
     @JsonProperty("name")

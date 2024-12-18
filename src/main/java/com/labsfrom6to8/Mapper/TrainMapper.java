@@ -16,6 +16,7 @@ public interface TrainMapper {
 
     @Select("SELECT * FROM trains WHERE is_active = TRUE")
     @Results({
+            @Result(property = "id", column = "id"),
             @Result(property = "name", column = "name"),
             @Result(property = "number", column = "number"),
             @Result(property = "isActive", column = "is_active")
