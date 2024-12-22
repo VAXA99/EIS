@@ -3,15 +3,16 @@
     <h2>Список активных поездов</h2>
     <ul>
       <li v-for="train in trains" :key="train.id">
-        {{ train.name }} ({{ train.number }})
-        <span v-if="train.isActive">[Активный]</span>
+        {{ train.name }} ({{ train.number }}) - Активен: {{ train.is_active ? "Да" : "Нет" }}
+        <button @click="$emit('edit', train)">Редактировать</button>
         <button @click="deleteTrain(train.id)">Удалить</button>
       </li>
     </ul>
   </div>
 </template>
+
 <script>
-import trainService from '@/services/trainService';
+import trainService from "@/services/trainService";
 
 export default {
   data() {
@@ -21,15 +22,14 @@ export default {
   },
   methods: {
     async fetchTrains() {
-      const response = await trainService.getTrains();
-      this.trains = response.data;
+      this.trains = (await trainService.getActiveTrains()).data;
     },
     async deleteTrain(id) {
       await trainService.deleteTrain(id);
       this.fetchTrains();
     },
   },
-  created() {
+  mounted() {
     this.fetchTrains();
   },
 };

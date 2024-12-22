@@ -1,19 +1,27 @@
 <template>
   <div id="app">
     <h1>Управление поездами</h1>
-    <TrainForm />
-    <TrainList />
+    <TrainForm @refresh="refreshList" ref="form" />
+    <TrainList @edit="editTrain" ref="list" />
   </div>
 </template>
 
 <script>
-import TrainList from '@/components/TrainList.vue';
-import TrainForm from '@/components/TrainForm.vue';
+import TrainForm from "@/components/TrainForm.vue";
+import TrainList from "@/components/TrainList.vue";
 
 export default {
   components: {
-    TrainList,
     TrainForm,
+    TrainList,
+  },
+  methods: {
+    refreshList() {
+      this.$refs.list.fetchTrains();
+    },
+    editTrain(train) {
+      this.$refs.form.editTrain(train);
+    },
   },
 };
 </script>

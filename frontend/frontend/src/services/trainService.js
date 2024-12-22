@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = 'http://localhost:8081/trains';
+const API_URL = "http://localhost:8081/trains";
 
 export default {
-    getTrains() {
+    getActiveTrains() {
         return axios.get(API_URL);
     },
     addTrain(train) {

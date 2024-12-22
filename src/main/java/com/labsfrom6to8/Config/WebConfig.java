@@ -13,7 +13,7 @@ public class WebConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**") // Разрешаем все пути
+                registry.addMapping("/**") // Разрешаем все путиф
                         .allowedOrigins("http://localhost:8082") // Разрешаем доступ с фронтенда
                         .allowedMethods("GET", "POST", "PUT", "DELETE") // Разрешаем методы
                         .allowedHeaders("*") // Разрешаем любые заголовки
